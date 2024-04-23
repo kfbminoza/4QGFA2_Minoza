@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+
+<style>
+    table {
+        margin-top: 50px;
+        border: 3px solid black;
+    }
+  th, td {
+    border: 3px solid black;
+    padding: 5px;
+  }
+</style>
+
+</head>
+
+<body>
+<h1>Multiplication Table</h1>
+<p>Please enter values from 2 to 10 only</p>
+<label for="start"></label>
+<input type="text" id="row">
+<label for="end">by</label>
+<input type="text" id="column">
+<button onclick="multiplicationTable()">Click when you're ready</button>
+
+<table id="mT"></table>
+
+<script>
+function multiplicationTable() {
+  var rows = parseInt(document.getElementById("row").value);
+  var columns = parseInt(document.getElementById("column").value);
+  
+  if (rows<2||rows>10||columns<2||columns>10||isNaN(rows)||isNaN(columns)) {
+    alert("Please enter numbers between 2 and 10");
+    return;
+  }
+  
+  var table = document.getElementById("mT");
+  table.innerHTML = "";
+  
+  for (var x = 1; x <= rows; x++) {
+    var row = table.insertRow();
+    for (var y = 1; y <= columns; y++) {
+      var num = row.insertCell();
+      num.textContent = x * y;
+    }
+  }
+}
+</script>
+
+</body>
+</html>
